@@ -8,6 +8,8 @@ const llm = new OpenAI({
 export async function generateAnswer(question: string) {
     let answer = ''
 
+console.log({question})
+
     try {
         answer = await llm.invoke(question);
     } catch (e) {
