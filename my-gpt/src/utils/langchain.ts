@@ -7,7 +7,9 @@ import { PromptTemplate } from "@langchain/core/prompts";
 */
 const llm = new OpenAI({
     openAIApiKey: import.meta.env.VITE_OPENAI_KEY,
-    temperature: 1
+    temperature: 1,
+    modelName: "gpt-4-0125-preview", 
+    maxTokens: 300
 });
 
 export async function generateAnswer(
