@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { generateAnswer } from "./utils/langchain";
 import Message from "./components/Message/Message";
+import Loader from "./components/Loader/Loader";
 
 export default function App() {
   const [question, setQuestion] = useState("")
   const [result, setResult] = useState({ question: "", answer: ""})
+  const [isLoading, setIsLoading] = useState(false)
+  const [hasError, setHasError] = useState(false)
     
   async function handleSubmitQuestion(input: string) {
     setResult({ ...result, question: input })
+    setIsLoading(true)
 
     try {
       const response = await generateAnswer(input)
@@ -15,6 +19,9 @@ export default function App() {
       if (response) setResult({ ...result, answer: response })
     } catch(e) {
       console.error(e)
+      setHasError(true)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -28,7 +35,14 @@ export default function App() {
             </h1>
           <div className="h-full ">
             <div className="h-full flex flex-col items-center text-sm dark:bg-gray-800">
-              {result?.answer && <Message sender="Me" title="Now" message={result?.answer} />}
+              {isLoading && <Loader /> }
+              {result?.answer && (
+                <Message 
+                  sender="Me" 
+                  title="Now" 
+                  message={hasError ? 'Something went wrong' : result?.answer} 
+                />
+              )}
             </div>
           </div>
         </div>
