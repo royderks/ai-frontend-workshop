@@ -11,6 +11,8 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@langchain/openai": "^0.0.25",
+    "langchain": "^0.1.30",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vitest": "^1.0.4"
