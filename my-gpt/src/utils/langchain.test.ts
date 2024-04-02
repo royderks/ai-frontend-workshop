@@ -3,10 +3,14 @@ import { generateAnswer } from './langchain';
 
 describe('LangChain', () => {
     it('Answers a question', async () => {
-        // 1. Add your own question here
-        const answer = await generateAnswer('Is United Kingdom a country, answer "yes" or "no" only.');
+        const answer = await generateAnswer('United Kingdom', 'Is the following {question} a country, answer "yes" or "no" only.');
 
-        // 2. Match the answer from the LLM to a predicted value
         assert.equal(answer.trim(), "Yes");
+    });
+
+    it('Answers a question incorrectly', async () => {
+        const answer = await generateAnswer('Amsterdam', 'Is the following {question} a country, answer "yes" or "no" only.');
+
+        assert.equal(answer.trim(), "no");
     });
 });
