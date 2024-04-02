@@ -33,7 +33,9 @@ You're now ready to start with the excercises.
 To interface with the LLMs from OpenAI, we need to install a library called LangChain:
 
 ```bash
-npm install langchain
+npm install langchain @langchain/openai
+
+
 ```
 
 After the installation is complete, you should add a new file called `.env` in the root of your Vite application and add the following environment variable:
