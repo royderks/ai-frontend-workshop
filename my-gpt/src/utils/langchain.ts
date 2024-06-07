@@ -16,8 +16,8 @@ export async function generateAnswer(
     let answer = ''
 
     const chatPrompt = ChatPromptTemplate.fromMessages([
-        ["System", promptTemplate],
-        ["User", "{question}"],
+        ["system", promptTemplate],
+        ["human", "{question}"],
     ])
 
     const formattedPrompt = await chatPrompt.formatMessages({

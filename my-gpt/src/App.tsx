@@ -40,7 +40,7 @@ export default function App() {
                 <Message 
                   sender="Me" 
                   title="Now" 
-                  message={hasError ? 'Something went wrong' : result?.answer} 
+                  message={result.answer} 
                 />
               )}
             </div>
